@@ -9,7 +9,6 @@ import logoTechleadconf from './assets/conf-logos/techleadconf.svg';
 import logoCtoconf from './assets/conf-logos/ctoconf.svg';
 import logoPodlodkaCrew from './assets/conf-logos/podlodka-crew.svg';
 import logoTeamleadconf from './assets/conf-logos/teamleadconf.svg';
-import logoAaaconf from './assets/conf-logos/aaaconf.svg';
 import logoPyhconf from './assets/conf-logos/pyhconf.svg';
 import clientsImg from './assets/clients.svg';
 import fabricaImg from './assets/fabrica.png';
@@ -17,6 +16,8 @@ import mostiImg from './assets/mosti.jpg';
 import qrChannelImg from './assets/qr-techlead-stream.png';
 import meatProxyImg from './assets/meat-proxy.png';
 import meatProxyVideo from './assets/meat-proxy-reaction.mp4';
+import skillsteamLogo from './assets/skillsteam-logo.svg';
+import nodejsLogo from './assets/nodejs-logo.svg';
 
 // ─── Дизайн-токены (правятся из панели Design) ───────────────────────────────
 export const design: DesignSystem = {
@@ -42,7 +43,7 @@ const PAD = 140;
 
 // ─── Шрифт Montserrat: локальные woff2, регистрируем один раз на слайд ───────
 const fontUrl = (name: string) => new URL(`./assets/fonts/${name}.woff2`, import.meta.url).href;
-const FONT_STYLE_ID = 'osd-webfont-aaa-ai-2026';
+const FONT_STYLE_ID = 'osd-webfont-podlodka-teamlead-2026';
 const fontFace = (weight: number, subset: string, range: string) => `
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: ${weight}; font-display: swap;
   src: url('${fontUrl(`montserrat-${weight}-${subset}`)}') format('woff2'); unicode-range: ${range}; }`;
@@ -950,7 +951,6 @@ const RoleCell = ({ label, span = 1, hot, dim }: { label: string; span?: number;
 
 const Tag = ({ text, tone }: { text: string; tone: 'bad' | 'good' }) => (
   <div style={{ background: tone === 'bad' ? '#fbd8dc' : '#d8f3e3', color: ink, fontSize: 22, fontWeight: 600, padding: '12px 20px', borderRadius: 10, whiteSpace: 'nowrap' }}>
-    {/* @slide-comment id="c-b58ff4e3" ts="2026-09-18T13:39:14.831Z" text="eyJub3RlIjoi0YPQtNC-0LvQuCJ9" */}
     {text}
   </div>
 );
@@ -1052,15 +1052,15 @@ const Cover: Page = () => (
   >
     <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 14, background: 'var(--osd-accent)' }} />
     <div className="rs-in">
-      <Eyebrow>AAA-conf · 2026</Eyebrow>
+      <Eyebrow style={{ fontSize: 34 }}>Podlodka TeamLead Crew · 2026</Eyebrow>
     </div>
-    <div className="rs-in rs-d1" style={{ marginTop: 40, maxWidth: 1500 }}>
-      <Heading size={128}>
-        3 вектора развития <A>AI&nbsp;SDLC</A>
+    <div className="rs-in rs-d1" style={{ marginTop: 40, maxWidth: 1560 }}>
+      <Heading size={100}>
+        Когда AI пишет весь код: что происходит с <A>ролями в&nbsp;команде</A>
       </Heading>
     </div>
-    <div className="rs-in rs-d2" style={{ fontSize: 40, lineHeight: 1.4, color: muted, marginTop: 40, maxWidth: 1600 }}>
-      Harness · Трансформация ролей · Автономность
+    <div className="rs-in rs-d2" style={{ fontSize: 38, lineHeight: 1.4, color: muted, marginTop: 40, maxWidth: 1600 }}>
+      Опыт перестройки ролевой модели: от ускорения ролей к сквозным инженерам
     </div>
     <div className="rs-in rs-d3" style={{ marginTop: 80 }}>
       <Speaker />
@@ -1095,7 +1095,6 @@ const CONF_LOGOS = [
   { src: logoCtoconf, alt: 'CTO Conf' },
   { src: logoPodlodkaCrew, alt: 'Podlodka Crew' },
   { src: logoTeamleadconf, alt: 'TeamLead Conf' },
-  { src: logoAaaconf, alt: 'AAA Conf' },
   { src: logoPyhconf, alt: 'ПыхКонф' },
 ];
 const ConfLogos = () => (
@@ -1677,8 +1676,7 @@ const SkillCol = ({ label, title, items }: { label: string; title: string; items
     <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 38, fontWeight: 700, letterSpacing: '-0.02em', margin: '14px 0 28px' }}>{title}</div>
     <ul style={{ margin: 0, paddingLeft: 30, fontSize: 26, lineHeight: 1.45, color: muted, display: 'flex', flexDirection: 'column', gap: 12 }}>
       {items.map((t) => (
-        <li key={t}>
-          {/* @slide-comment id="c-2baf778f" ts="2026-09-18T13:33:39.028Z" text="eyJub3RlIjoi0YPQtNCw0LvQuCJ9" */}{t}</li>
+        <li key={t}>{t}</li>
       ))}
     </ul>
   </div>
@@ -2002,6 +2000,75 @@ const OurModel: Page = () => (
 );
 
 
+// Tiny team в продуктовой разработке: продакт отдельно, аналитиков нет
+const OurModelProduct: Page = () => (
+  <Live style={{ padding: `100px ${PAD}px 0` }}>
+    <Steps>
+      <div className="rs-in">
+        <Eyebrow>tiny team в продукте</Eyebrow>
+        <div style={{ marginTop: 20 }}>
+          <Heading size={64}>Продакт отдельно, аналитиков нет</Heading>
+        </div>
+        <p style={{ fontSize: 30, lineHeight: 1.4, color: muted, margin: '16px 0 0' }}>
+          В своём продукте нет внешнего заказчика и договора: инженер работает напрямую с продактом.
+        </p>
+      </div>
+      <div className="rs-steps-row" style={{ display: 'flex', alignItems: 'stretch', gap: 0, marginTop: 32 }}>
+        <div
+          style={{
+            width: 220,
+            flexShrink: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
+            background: 'var(--osd-bg)',
+            border: `2px dashed ${muted}`,
+            borderRadius: 'var(--osd-radius)',
+            padding: 24,
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 26, fontWeight: 800 }}>Пользователи</div>
+          <div style={{ fontSize: 22, color: muted, lineHeight: 1.3 }}>рынок и метрики продукта</div>
+        </div>
+        <LinkArrow label="обратная связь, метрики" both />
+        <Step>
+          <ModelBlock
+            eyebrow="Блок 1 · Продукт"
+            title="Продакт"
+            cols={1}
+            stages={<Chevron label="Idea" color={CHEV.idea} />}
+            roles={<RoleCell label="Продакт" hot />}
+            items={['Отдельная роль', 'Отвечает за продукт и приоритеты', 'Аналитика между ним и инженером нет']}
+          />
+        </Step>
+        <LinkArrow label="цель → результат" both />
+        <Step>
+          <ModelBlock
+            eyebrow="Блок 2 · Производство"
+            title="Продукт-инженер"
+            accent
+            cols={4}
+            stages={
+              <>
+                <Chevron label="Req" color={CHEV.req} />
+                <Chevron label="Dev" color={CHEV.dev} />
+                <Chevron label="Test" color={CHEV.test} />
+                <Chevron label="Deploy" color={CHEV.deploy} />
+              </>
+            }
+            roles={<RoleCell label="Инженер + агенты" span={4} />}
+            items={['Сам разбирает требования с продактом', 'Ведёт задачу целиком: фронт, бэкенд, тесты, деплой', 'Отвечает за результат, а не за роль']}
+          />
+        </Step>
+      </div>
+    </Steps>
+    <Footer />
+  </Live>
+);
+
 // Раз и в дамки? Нет, по плану
 const Damki2: Page = () => (
   <Live style={{ padding: `100px ${PAD}px 0` }}>
@@ -2183,7 +2250,6 @@ const ProductEngineer: Page = () => (
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <Tag text="Ноль хендофов внутри цикла" tone="good" />
             <Tag text="Смысл и результат в одних руках" tone="good" />
-            <Tag text="Сеньорный уровень по всему стеку" tone="bad" />
           </div>
         </SdlcPanel>
       </div>
@@ -2380,7 +2446,7 @@ const Questions: Page = () => (
 Questions.transition = breath;
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// AAA-conf: 3 вектора развития AI SDLC
+// Вводная: опрос, тезис, три вектора
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // Тезис доклада: три вектора
@@ -2411,10 +2477,13 @@ const ThreeVectors: Page = () => (
 );
 
 // Опрос зала: изменились ли техпроцессы
-const PollOption = ({ n, children }: { n: string; children: ReactNode }) => (
-  <div style={{ width: '100%', boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 40, padding: '36px 44px', background: surface, border: `1px solid ${line}`, borderRadius: 'var(--osd-radius)' }}>
-    <span style={{ fontFamily: 'var(--osd-font-display)', fontSize: 56, fontWeight: 800, color: 'var(--osd-accent)', width: 80, flex: 'none' }}>{n}</span>
-    <span style={{ fontSize: 44, fontWeight: 600, letterSpacing: '-0.015em' }}>{children}</span>
+const PollOption = ({ n, children, sub }: { n: string; children: ReactNode; sub?: ReactNode }) => (
+  <div style={{ width: '100%', boxSizing: 'border-box', display: 'flex', alignItems: 'center', gap: 40, padding: '32px 44px', background: surface, border: `1px solid ${line}`, borderRadius: 'var(--osd-radius)' }}>
+    <span style={{ fontFamily: 'var(--osd-font-display)', fontSize: 56, fontWeight: 800, color: 'var(--osd-accent)', width: 80, flex: 'none', textAlign: 'center' }}>{n}</span>
+    <span>
+      <span style={{ display: 'block', fontSize: 42, fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.25 }}>{children}</span>
+      {sub && <span style={{ display: 'block', fontSize: 28, color: muted, marginTop: 6 }}>{sub}</span>}
+    </span>
   </div>
 );
 const PollChange: Page = () => (
@@ -2549,8 +2618,8 @@ const Start2026: Page = () => (
             n="02"
             title="Трансформация ролей"
             stance="wait"
-            chip="не рискнули"
-            text="Рискованно: мало реального опыта. Массовые эксперименты в России — только в H1 2026"
+            chip="точечно"
+            text="Пилоты продукт-инженеров на нескольких продуктах. Массово не трогали: мало опыта на рынке"
             payoff={<Payoff level={1} label="долго + риск" />}
           />
         </Step>
@@ -2568,14 +2637,14 @@ const Start2026: Page = () => (
     </div>
     <Steps>
       <Step>
-        <Caption top={40}>Ставка на самую быструю отдачу: качаем harness в текущих ролях, роли почти не трогаем.</Caption>
+        <Caption top={40}>Ставка на самую быструю отдачу: качаем harness в текущих ролях, роли меняем только в пилотах.</Caption>
       </Step>
     </Steps>
   </Frame>
 );
 
 // ─── Глава 01: Harness ───────────────────────────────────────────────────────
-const Div01 = dividerPage('01', 'Harness', 'Первые полгода 2026: стабилизируем качество, которое выдаёт агент, прежде чем трогать роли');
+const Div01 = dividerPage('01', 'Наш путь в AI', 'Год встраивали AI в классические роли: каждой роли — свой агент и общий harness');
 
 // Контекст vs реализация: куда вкладывались
 const LayerCard = ({ eyebrow, title, items, focus, note }: { eyebrow: string; title: string; items: string[]; focus?: boolean; note: ReactNode }) => (
@@ -2798,7 +2867,11 @@ const HarnessDirections: Page = () => (
 );
 
 // ─── Глава 02: Автономность ──────────────────────────────────────────────────
-const Div03 = dividerPage('03', 'Автономность', 'Вектор, который мы недооценили: без цели по автономности каждый строит свой мост');
+const Div03 = dividerPage('03', 'Что на рынке', 'Как перестраивают роли другие: tiny team, схлопывание ролей, продукт-инженер');
+const Div04 = dividerPage('04', 'Трансформация ролей', 'С чего мы начали: пилоты, карта шагов и матрица перекрытия');
+const Div05 = dividerPage('05', 'Кого мы растим', 'Модель компетенций, стеки и грейды продукт-инженера');
+const Div06 = dividerPage('06', 'Как переводим людей', 'Скрининг вместо переаттестации, ИПР и новые процессы');
+const Div07 = dividerPage('07', 'Роль тимлида', 'Что происходит с тимлидом, когда команда становится меньше');
 
 const BridgesLesson: Page = () => (
   <Shout eyebrow="Урок">
@@ -2807,11 +2880,11 @@ const BridgesLesson: Page = () => (
 );
 
 // ─── Глава 02: Трансформация ролей ───────────────────────────────────────────
-const Div02 = dividerPage('02', 'Трансформация ролей', 'Три урока, которые заставили нас начать перестраивать роли');
+const Div02 = dividerPage('02', 'Почему мы упёрлись в модель', 'Ускорили каждую роль, а задачи всё равно тонут в передачах между людьми');
 
 // H1 2026: роли не меняли, но harness — в каждую роль
 const RolesH1: Page = () => (
-  <Frame title={<>Harness — в <A>каждую</A> роль</>} lead="Первая половина 2026: роли не преобразовывали, структуру команды не трогали." gap={56}>
+  <Frame title={<>Harness — в <A>каждую</A> роль</>} lead="Первая половина 2026: на большинстве проектов роли и структуру команды не трогали." gap={56}>
     <div className="rs-steps-row" style={{ display: 'flex', gap: 32 }}>
       <Steps>
         <Step>
@@ -2880,7 +2953,7 @@ const LessonsOverview: Page = () => (
 const LessonIntro = ({ n, title, sub }: { n: string; title: ReactNode; sub: ReactNode }) => (
   <Live style={{ padding: `0 ${PAD}px`, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
     <div className="rs-in">
-      <Eyebrow style={{ fontSize: 30 }}>Урок {n} из 3</Eyebrow>
+      <Eyebrow style={{ fontSize: 30 }}>Флажок {n} из 3</Eyebrow>
     </div>
     <div className="rs-in rs-d1" style={{ marginTop: 28, borderLeft: '10px solid var(--osd-accent)', paddingLeft: 56 }}>
       <Heading size={104}>{title}</Heading>
@@ -2902,7 +2975,7 @@ const Lesson4: Page = () => (
 
 // Подвывод урока
 const LessonTakeaway = ({ n, children }: { n: string; children: ReactNode }) => (
-  <Shout eyebrow={<span style={{ fontSize: 30 }}>Вывод урока {n}</span>} size={72}>
+  <Shout eyebrow={<span style={{ fontSize: 30 }}>Вывод · флажок {n}</span>} size={72}>
     {children}
   </Shout>
 );
@@ -3006,7 +3079,7 @@ const WeeklySync: Page = () => (
 );
 
 const LessonsConclusion: Page = () => (
-  <Frame title="Выводы из уроков" gap={48}>
+  <Frame title="Что показали три флажка" gap={48}>
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
       <Steps>
         <Step>
@@ -3361,8 +3434,982 @@ const VectorTakeaways: Page = () => (
   </Frame>
 );
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// Podlodka TeamLead Crew: роли, тимлид, компетенции
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// О чём доклад
+const Agenda: Page = () => (
+  <Frame title="О чём поговорим" gap={56}>
+    <BulletList gap={22}>
+      <Steps>
+        <Step>
+          <Bullet size={36} mark="01">Наш путь: как мы встраивали AI в классические роли</Bullet>
+        </Step>
+        <Step>
+          <Bullet size={36} mark="02">Почему мы упёрлись в ролевую модель</Bullet>
+        </Step>
+        <Step>
+          <Bullet size={36} mark="03">Что на рынке: продукт-инженер в продукте и в заказе</Bullet>
+        </Step>
+        <Step>
+          <Bullet size={36} mark="04">Трансформация ролей: с чего мы начали</Bullet>
+        </Step>
+        <Step>
+          <Bullet size={36} mark="05">Кого мы растим: компетенции, стеки и грейды</Bullet>
+        </Step>
+        <Step>
+          <Bullet size={36} mark="06">Как переводим людей: скрининг, ИПР, процессы</Bullet>
+        </Step>
+        <Step>
+          <Bullet size={36} mark="07">Роль тимлида в обозримом будущем</Bullet>
+        </Step>
+      </Steps>
+    </BulletList>
+  </Frame>
+);
+
+// Опросы в чат (онлайн)
+const PollRoles: Page = () => (
+  <Frame title="🙋 Схлопывание ролей или продукт‑инженеры?" titleSize={64} lead="Напишите в чат:" gap={44}>
+    <div className="rs-steps-col" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <Steps>
+        <Step>
+          <PollOption n="1" sub="Инженеры, которые в соло делают задачу целиком">
+            Есть подвижки к продукт-инженерам или фулстекам
+          </PollOption>
+        </Step>
+        <Step>
+          <PollOption n="2">В ролях ничего не меняется, и даже не думаем менять</PollOption>
+        </Step>
+        <Step>
+          <PollOption n="3">Я и есть продукт-инженер =)</PollOption>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+const PollSmallTeam: Page = () => (
+  <Frame title="🙋 Кто слышал про small team?" lead="Напишите в чат:" gap={44}>
+    <div className="rs-steps-col" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <Steps>
+        <Step>
+          <PollOption n="+">Слышал</PollOption>
+        </Step>
+        <Step>
+          <PollOption n="−">Не слышал про такой термин</PollOption>
+        </Step>
+        <Step>
+          <PollOption n="!!">У нас уже small team =)</PollOption>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Почему ускорение отдельных ролей — тупик
+const RoleSpeedupDeadEnd: Page = () => (
+  <Frame title={<>Ускорение отдельных ролей — <A>тупик</A></>} lead="Для большинства проектов: заказная разработка, небольшие продуктовые команды." gap={56}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 32, alignItems: 'stretch' }}>
+      <Steps>
+        <Step>
+          <Track n="01" title="Задачи короткие" text="Агент делает работу за час, а передача между ролями занимает дни" />
+        </Step>
+        <Step>
+          <Track n="02" title="Команды маленькие" text="3–6 человек на проекте: роль часто загружена частично, её ускорение не сокращает срок" />
+        </Step>
+        <Step>
+          <Track n="03" title="Узкое место переезжает" text="Ускорили код — очередь в ревью, тестах и постановке. Срок фичи почти не меняется" />
+        </Step>
+      </Steps>
+    </div>
+    <Steps>
+      <Step>
+        <Caption top={48}>Считать нужно срок фичи целиком, а не скорость каждой роли по отдельности.</Caption>
+      </Step>
+    </Steps>
+  </Frame>
+);
+
+// Продукт-инженер: продукт vs заказ
+const CompareCol = ({ label, title, items, accent }: { label: string; title: string; items: ReactNode[]; accent?: boolean }) => (
+  <div
+    style={{
+      flex: 1,
+      minWidth: 0,
+      background: accent ? tint : surface,
+      border: accent ? '3px solid var(--osd-accent)' : `1px solid ${line}`,
+      borderRadius: 'var(--osd-radius)',
+      padding: '36px 44px',
+    }}
+  >
+    <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--osd-accent)' }}>{label}</div>
+    <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 44, fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em', margin: '12px 0 24px' }}>{title}</div>
+    <ul style={{ margin: 0, paddingLeft: 32, fontSize: 30, lineHeight: 1.4, display: 'flex', flexDirection: 'column', gap: 14 }}>
+      {items.map((t, i) => (
+        <li key={i}>{t}</li>
+      ))}
+    </ul>
+  </div>
+);
+const ProductVsOutsource: Page = () => (
+  <Frame title="Продукт-инженер: продукт и заказ" lead="Одна идея — разные границы ответственности." gap={48}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 40, alignItems: 'stretch' }}>
+      <Steps>
+        <Step>
+          <CompareCol
+            label="продуктовая разработка"
+            title="Весь цикл в одних руках"
+            items={['Свой продукт и свои метрики', 'Инженер сам формулирует гипотезы', 'Граница с пользователем, её держит инженер', 'Роль закрывает путь от идеи до поддержки']}
+          />
+        </Step>
+        <Step>
+          <CompareCol
+            label="заказная разработка"
+            title="Производство в одних руках"
+            accent
+            items={['Внешний заказчик: договор, сроки, бюджет', 'Требования приходят снаружи и меняются', <>Границу держит <b>ПМ / аналитик</b></>, 'Инженер ведёт задачу от спеки до деплоя']}
+          />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Как подошли к трансформации
+const TransformTitle: Page = () => <Shout size={112}>Как мы подошли к трансформации</Shout>;
+
+// Пилоты продукт-инженеров: успешны, но держатся на зубрах
+const PilotsVeterans: Page = () => (
+  <Frame title="Пилоты уже были — и успешны" lead="С начала 2026 на нескольких продуктах работают продукт-инженеры." gap={64}>
+    <div style={{ display: 'flex', gap: 80, alignItems: 'center' }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <Steps>
+          <Step>
+            <Bullet size={36}>Задачи идут без передач между ролями</Bullet>
+          </Step>
+          <Step>
+            <div style={{ marginTop: 26 }}>
+              <Bullet size={36}>
+                Но успех держится в первую очередь <A>на людях</A>
+              </Bullet>
+            </div>
+          </Step>
+          <Step>
+            <div
+              style={{
+                marginTop: 56,
+                background: tint,
+                borderLeft: '8px solid var(--osd-accent)',
+                borderRadius: '0 var(--osd-radius) var(--osd-radius) 0',
+                padding: '28px 40px',
+                fontSize: 32,
+                lineHeight: 1.4,
+                fontWeight: 600,
+              }}
+            >
+              Такие люди — редкость. Копированием пилота <A>не масштабируется</A>: остальных нужно доращивать.
+            </div>
+          </Step>
+        </Steps>
+      </div>
+      <div className="rs-in rs-d2" style={{ flex: 'none', width: 560, borderLeft: '8px solid var(--osd-accent)', paddingLeft: 40 }}>
+        <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: muted }}>Кто в пилотах</div>
+        <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 150, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.04em', color: 'var(--osd-accent)', marginTop: 16, whiteSpace: 'nowrap' }}>
+          10–15
+        </div>
+        <div style={{ fontSize: 32, lineHeight: 1.4, marginTop: 16 }}>
+          лет опыта. Зубры, которые застали времена, когда разработчик делал всё — <b>ака веб-мастер</b>
+        </div>
+      </div>
+    </div>
+  </Frame>
+);
+
+// Статус шага трансформации
+type StepStatus = 'done' | 'wip' | 'plan';
+const statusChip: Record<StepStatus, CSSProperties> = {
+  done: { background: 'var(--osd-accent)', color: '#fff', border: '2px solid transparent' },
+  wip: { background: tint, color: 'var(--osd-accent)', border: '2px solid transparent' },
+  plan: { background: 'transparent', color: muted, border: `2px dashed ${accentSoft}` },
+};
+const StatusRow = ({ n, title, text, status, chip }: { n: string; title: string; text: string; status: StepStatus; chip: string }) => (
+  <div
+    style={{
+      width: '100%',
+      display: 'grid',
+      gridTemplateColumns: '80px 520px 1fr 300px',
+      alignItems: 'center',
+      gap: 24,
+      padding: '18px 0',
+      borderBottom: `1px solid ${line}`,
+      opacity: status === 'plan' ? 0.75 : 1,
+    }}
+  >
+    <span style={{ fontFamily: 'var(--osd-font-display)', fontSize: 44, fontWeight: 800, color: 'var(--osd-accent)' }}>{n}</span>
+    <span style={{ fontFamily: 'var(--osd-font-display)', fontSize: 36, fontWeight: 700, letterSpacing: '-0.02em' }}>{title}</span>
+    <span style={{ fontSize: 28, lineHeight: 1.35, color: muted }}>{text}</span>
+    <span
+      style={{
+        justifySelf: 'end',
+        whiteSpace: 'nowrap',
+        fontSize: 22,
+        fontWeight: 700,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        padding: '10px 20px',
+        borderRadius: 999,
+        ...statusChip[status],
+      }}
+    >
+      {chip}
+    </span>
+  </div>
+);
+const TransformPath: Page = () => (
+  <Frame title="Где мы сейчас" lead="Пилоты показали, что модель работает. Теперь дорастаем до неё всей компанией." gap={40}>
+    <div className="rs-steps-col" style={{ display: 'flex', flexDirection: 'column' }}>
+      <Steps>
+        <Step>
+          <StatusRow n="1" title="Пилоты" text="Продукт-инженеры на нескольких продуктах" status="done" chip="сделано" />
+        </Step>
+        <Step>
+          <StatusRow n="2" title="Матрица перекрытия" text="Где фронт закрывает бэк, а бэк — фронт" status="done" chip="с июля" />
+        </Step>
+        <Step>
+          <StatusRow n="3" title="Пересборка команд" text="Команды под продукт-инженеров" status="wip" chip="в процессе" />
+        </Step>
+        <Step>
+          <StatusRow n="4" title="Скрининг" text="Встреча с продукт-инженером: основа для ИПР" status="wip" chip="в процессе" />
+        </Step>
+        <Step>
+          <StatusRow n="5" title="План переобучения" text="ИПР у каждого по итогам скрининга" status="wip" chip="в процессе" />
+        </Step>
+        <Step>
+          <StatusRow n="6" title="Переаттестация" text="На новые грейды, через несколько месяцев" status="plan" chip="в планах" />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Матрица перекрытия задач фронт ⇄ бэк (с июля)
+const MatrixCol = ({ can, title, items, flex = 1 }: { can?: boolean; title: string; items: string[]; flex?: number }) => (
+  <div
+    style={{
+      flex,
+      minWidth: 0,
+      background: can ? tint : 'transparent',
+      border: can ? '3px solid var(--osd-accent)' : `2px dashed ${accentSoft}`,
+      borderRadius: 'var(--osd-radius)',
+      padding: '28px 36px',
+      color: can ? 'var(--osd-text)' : muted,
+    }}
+  >
+    <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 34, fontWeight: 800, letterSpacing: '-0.02em', color: can ? 'var(--osd-accent)' : muted }}>
+      {can ? '✓' : '✕'} {title}
+    </div>
+    <ul style={{ margin: '18px 0 0', paddingLeft: 28, fontSize: 25, lineHeight: 1.3, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {items.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  </div>
+);
+const SharedLimits = () => (
+  <div
+    style={{
+      marginTop: 24,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 24,
+      padding: '18px 32px',
+      background: surface,
+      border: `1px solid ${line}`,
+      borderRadius: 'var(--osd-radius)',
+      fontSize: 25,
+      lineHeight: 1.35,
+    }}
+  >
+    <span style={{ flex: 'none', fontSize: 20, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--osd-accent)' }}>Обоим пока нельзя</span>
+    <span>Архитектура проекта · рефакторинг · оптимизация · базовые конфиги фреймворка · <b>ревью</b></span>
+  </div>
+);
+const OverlapFrontToBack: Page = () => (
+  <Frame title={<>Матрица перекрытия: <A>фронт → бэк</A></>} titleSize={56} gap={36}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 32, alignItems: 'stretch' }}>
+      <MatrixCol
+        can
+        flex={1.1}
+        title="Может"
+        items={[
+          'Изменить типизацию значений ключей ответа',
+          'Добавить / удалить ключ в JSON-ответе',
+          'Фикс простых багов: лимиты, фильтры',
+          'Пагинация, фильтр, сортировка',
+          'Изменение серверной валидации',
+          'CRUD для простых сущностей',
+          'Написание тестов',
+          'Изменение условной бизнес-логики',
+        ]}
+      />
+      <Steps>
+        <Step>
+          <MatrixCol
+            title="Не может"
+            items={[
+              'Битрикс: 1С-выгрузка, товары, торговые предложения',
+              'Проектирование БД',
+              'Очереди: Rabbit, Kafka',
+              'Миграции',
+              'Авторизация и ролевая модель',
+              'Сложные транзакции',
+            ]}
+          />
+        </Step>
+      </Steps>
+    </div>
+    <Steps>
+      <Step>
+        <SharedLimits />
+      </Step>
+    </Steps>
+  </Frame>
+);
+const OverlapBackToFront: Page = () => (
+  <Frame title={<>Матрица перекрытия: <A>бэк → фронт</A></>} titleSize={56} gap={36}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 32, alignItems: 'stretch' }}>
+      <MatrixCol
+        can
+        flex={1.3}
+        title="Может"
+        items={[
+          'Автогенерация API по контракту',
+          'Изменить текст, подпись, ссылку',
+          'Фикс простых багов: валидация, состояние компонента',
+          'Добавить / изменить сгенерированные запросы react-query и вывести результат',
+          'Изменить правила валидации форм на клиенте',
+          'Собрать простой экран из готовых компонентов без макета',
+          'Собрать форму из готовых компонентов',
+          'Сверстать компонент с нуля или поправить вёрстку текущего',
+          'Написание тестов',
+          'Изменение условной бизнес-логики',
+        ]}
+      />
+      <Steps>
+        <Step>
+          <MatrixCol
+            title="Не может"
+            items={[
+              'Стратегия рендеринга и кеширования Next',
+              'Крупная адаптивная вёрстка на Tailwind: страница с нуля, каркас',
+              'Анимация',
+              'Изменения в дизайн-системе',
+            ]}
+          />
+        </Step>
+      </Steps>
+    </div>
+    <Steps>
+      <Step>
+        <SharedLimits />
+      </Step>
+    </Steps>
+  </Frame>
+);
+
+// QA — самый сложный переход
+const QaHardest: Page = () => (
+  <Shout eyebrow={<span style={{ fontSize: 30 }}>Сложнее всего</span>} size={88}>
+    <A>QA</A> труднее всех стать универсальным инженером: техническая база зачастую слабее
+  </Shout>
+);
+
+// Опыт бигтеха: переаттестация сразу
+const BigtechRecert: Page = () => (
+  <Frame title="Можно жёстко: опыт одного бигтеха" lead="Крупная компания в России перевела на продукт-инженеров многие юниты." gap={48}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 40, alignItems: 'stretch' }}>
+      <Steps>
+        <Step>
+          <CompareCol
+            label="бигтех"
+            title="Сразу переаттестация"
+            items={['Переаттестация на продукт-инженеров во многих юнитах', <>Не прошёл — <b>минус грейд</b></>]}
+          />
+        </Step>
+        <Step>
+          <CompareCol
+            label="мы"
+            title="Сначала дорастить"
+            accent
+            items={['Вместо переаттестации — скрининг', 'По итогам скрининга — ИПР и время на рост', 'Переаттестация через несколько месяцев']}
+          />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Скрининг вместо переаттестации
+const Screening: Page = () => (
+  <Frame title="Скрининг вместо переаттестации" lead="Цель — не поставить оценку, а понять пробелы и составить ИПР." gap={64}>
+    <div className="rs-steps-row" style={{ display: 'flex', alignItems: 'stretch' }}>
+      <div style={{ flex: 1, minWidth: 0, display: 'flex' }}>
+        <Card label="кто" title="Инженер старой роли" text="Фронт, бэк и другие узкие специализации" />
+      </div>
+      <Steps>
+        <Step>
+          <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
+            <ArrowRight />
+            <Card label="встреча" title="Скрининг" text="Встреча с продукт-инженером. Где-то head front и head back ходят парой" accent />
+          </div>
+        </Step>
+        <Step>
+          <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
+            <ArrowRight />
+            <Card label="результат" title="ИПР" text="Индивидуальный план развития до переаттестации" />
+          </div>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Грейды: старый рост закрыт, у продукт-инженеров новые грейды
+const GradeBlock = ({ label, num, text, accent, chip }: { label: string; num: string; text: string; accent?: boolean; chip?: string }) => (
+  <div
+    style={{
+      flex: 1,
+      minWidth: 0,
+      position: 'relative',
+      background: accent ? tint : 'transparent',
+      border: accent ? '3px solid var(--osd-accent)' : `2px dashed ${accentSoft}`,
+      borderRadius: 'var(--osd-radius)',
+      padding: '40px 48px',
+      color: accent ? 'var(--osd-text)' : muted,
+    }}
+  >
+    {chip && (
+      <div
+        style={{
+          position: 'absolute',
+          top: -20,
+          right: 32,
+          background: ink,
+          color: '#fff',
+          fontSize: 20,
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          padding: '8px 18px',
+          borderRadius: 999,
+        }}
+      >
+        {chip}
+      </div>
+    )}
+    <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: accent ? 'var(--osd-accent)' : muted }}>{label}</div>
+    <div
+      style={{
+        fontFamily: 'var(--osd-font-display)',
+        fontSize: 200,
+        fontWeight: 800,
+        lineHeight: 1,
+        letterSpacing: '-0.04em',
+        color: accent ? 'var(--osd-accent)' : accentSoft,
+        marginTop: 20,
+      }}
+    >
+      {num}
+    </div>
+    <div style={{ fontSize: 32, lineHeight: 1.4, marginTop: 20 }}>{text}</div>
+  </div>
+);
+const GradesShift: Page = () => (
+  <Frame title="Рост по старым грейдам закрыт" lead="Дальше расти можно только в новой роли." gap={64}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 48, alignItems: 'stretch' }}>
+      <GradeBlock label="старые роли" num="7+" text="грейдов в каждом направлении, подробные матрицы" chip="рост закрыт" />
+      <Steps>
+        <Step>
+          <GradeBlock label="продукт-инженер" num="3" text="грейда: E1 · E2 · E3" accent />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+const ProcessesIntroduced: Page = () => (
+  <Frame title="Какие процессы внедрили" lead="Старые процессы передачи заменяем процессами вокруг одного инженера." gap={36}>
+    <div className="rs-steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+      <Steps>
+        <Step>
+          <Card label="поток" title="Фича на одного" text="Один инженер ведёт задачу от спеки до деплоя, без передач внутри" accent />
+        </Step>
+        <Step>
+          <Card label="граница" title="Front-office" text="ПМ и аналитик держат заказчика, постановку и приёмку" />
+        </Step>
+        <Step>
+          <Card label="качество" title="Quality gates" text="Проверки вместо отдельного шага QA: после спеки и перед merge" />
+        </Step>
+        <Step>
+          <Card label="контроль" title="Ревью второй ролью" text="Пока инженер растёт, код в чужом стеке смотрит профильный коллега" />
+        </Step>
+        <Step>
+          <Card label="обратная связь" title="Еженедельный разбор" text="Проблемы проектов разбираем на встрече по SDD и harness" />
+        </Step>
+        <Step>
+          <Card label="метрики" title="Срок фичи" text="Смотрим срок от постановки до прода, а не скорость ролей" />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Роль тимлида
+const TeamleadTitle: Page = () => <Shout size={128}>А что с тимлидом?</Shout>;
+
+// Тимлид сегодня: четыре ситуации
+const TeamleadToday: Page = () => (
+  <Frame title="Тимлид сегодня: зависит от команды" lead="Роль тимлида меняем не приказом, а по ситуации на проекте." gap={48}>
+    <div className="rs-steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
+      <Steps>
+        <Step>
+          <Card label="старые проекты" title="Роль не меняем" text="Классическая ролевая модель: тимлид работает как раньше, задачи распределяет с учётом матрицы перекрытия" />
+        </Step>
+        <Step>
+          <Card label="чистые продукт-инженеры" title="1 лид + 3 инженера" text="Команда из зубров с 10–15 годами опыта" />
+        </Step>
+        <Step>
+          <Card label="small team · 1–2 инженера" title="Тимлид уже не нужен" text="Инженеры сами ведут проект" />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Шкала техлид ↔ тимлид-менеджер
+const SCALE_W = 1640;
+const GhostDot = ({ at }: { at: number }) => (
+  <div
+    style={{
+      position: 'absolute',
+      left: SCALE_W * at - 13,
+      top: 101,
+      width: 26,
+      height: 26,
+      boxSizing: 'border-box',
+      borderRadius: '50%',
+      background: surface,
+      border: `3px solid ${accentSoft}`,
+    }}
+  />
+);
+const TinyTeamPill = () => (
+  <div
+    style={{
+      flex: 1,
+      height: 56,
+      borderRadius: 14,
+      border: '2px solid var(--osd-accent)',
+      background: surface,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: 22,
+      fontWeight: 700,
+      color: 'var(--osd-accent)',
+    }}
+  >
+    tiny team
+  </div>
+);
+const OutcomeCard = ({ label, title, children }: { label: string; title: ReactNode; children: ReactNode }) => (
+  <div
+    style={{
+      flex: 1,
+      minWidth: 0,
+      background: surface,
+      border: `1px solid ${line}`,
+      borderRadius: 'var(--osd-radius)',
+      padding: '32px 40px',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16,
+    }}
+  >
+    <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--osd-accent)' }}>{label}</div>
+    <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 38, fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.02em' }}>{title}</div>
+    {children}
+  </div>
+);
+const TeamleadSlider: Page = () => (
+  <Frame title="Техлид — тимлид: шкала была всегда" lead="Где стоит ползунок, всегда зависело от команды и компании." gap={40}>
+    <div className="rs-in rs-d1" style={{ position: 'relative', width: SCALE_W, height: 170 }}>
+      <div style={{ position: 'absolute', left: 0, top: 0, fontFamily: 'var(--osd-font-display)', fontSize: 30, fontWeight: 800, color: 'var(--osd-accent)' }}>
+        Инженерные процессы
+      </div>
+      <div style={{ position: 'absolute', right: 0, top: 0, fontFamily: 'var(--osd-font-display)', fontSize: 30, fontWeight: 800, color: muted, textAlign: 'right' }}>
+        Классический менеджмент
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 108,
+          height: 12,
+          borderRadius: 999,
+          background: 'linear-gradient(90deg, #6f00ff 0%, #b285e0 50%, #ddd6ea 100%)',
+        }}
+      />
+      <GhostDot at={0.2} />
+      <GhostDot at={0.36} />
+      <GhostDot at={0.5} />
+      <GhostDot at={0.64} />
+      <GhostDot at={0.8} />
+      <div style={{ position: 'absolute', left: SCALE_W * 0.5 - 300, width: 600, top: 140, textAlign: 'center', fontSize: 22, color: muted }}>
+        у каждой компании и команды своя точка
+      </div>
+      <Steps>
+        <Step>
+          <svg style={{ position: 'absolute', left: SCALE_W * 0.18, top: 52 }} width={SCALE_W * 0.42} height={36} viewBox={`0 0 ${SCALE_W * 0.42} 36`} fill="none" aria-hidden="true">
+            <path d={`M${SCALE_W * 0.42 - 4} 18H16M30 6L16 18l14 12`} style={{ stroke: 'var(--osd-accent)' }} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <div style={{ position: 'absolute', left: SCALE_W * 0.24, width: SCALE_W * 0.32, top: 46, textAlign: 'center' }}>
+            <span style={{ background: 'var(--osd-bg)', padding: '0 14px', fontSize: 24, fontWeight: 700, color: 'var(--osd-accent)' }}>меньше блокеров и хендофов</span>
+          </div>
+          <div
+            className="rs-pulse"
+            style={{
+              position: 'absolute',
+              left: SCALE_W * 0.16 - 22,
+              top: 92,
+              width: 44,
+              height: 44,
+              borderRadius: '50%',
+              background: 'var(--osd-accent)',
+              border: '4px solid #fff',
+              boxSizing: 'border-box',
+            }}
+          />
+        </Step>
+      </Steps>
+    </div>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 32, alignItems: 'stretch', marginTop: 40 }}>
+      <Steps>
+        <Step>
+          <OutcomeCard label="внутри команды" title={<>Ползунок едет к <A>инженерии</A></>}>
+            <div style={{ fontSize: 28, lineHeight: 1.45, color: muted }}>
+              Блокеров и хендофов меньше — координировать почти нечего. Тимлид становится играющим тренером.
+            </div>
+          </OutcomeCard>
+        </Step>
+        <Step>
+          <OutcomeCard label="над командами" title={<>Менеджеру — <A>N tiny team</A></>}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 4 }}>
+              <div style={{ padding: '10px 28px', borderRadius: 14, background: ink, color: '#fff', fontSize: 24, fontWeight: 700 }}>Менеджер</div>
+              <div style={{ color: accentSoft, fontSize: 28, lineHeight: 1 }}>↓ ↓ ↓</div>
+              <div style={{ display: 'flex', gap: 14, width: '100%' }}>
+                <TinyTeamPill />
+                <TinyTeamPill />
+                <TinyTeamPill />
+              </div>
+            </div>
+          </OutcomeCard>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Кейс: команда отказалась от тимлида
+const TeamleadCase: Page = () => (
+  <Frame title={<>Кейс: <A>«нам тимлид не нужен»</A></>} lead="Small team пришла с конфликтом: лид ничего не делает, зачем он нам." gap={48}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 40, alignItems: 'stretch' }}>
+      <Steps>
+        <Step>
+          <CompareCol
+            label="почему так вышло"
+            title="Лид-менеджер, сильная команда"
+            items={['Лид был больше менеджером, чем инженером', 'Ребята сильны в софтах', 'Интуитивно подхватили проект на себя']}
+          />
+        </Step>
+        <Step>
+          <CompareCol
+            label="что сделали"
+            title="Не стали мешать"
+            accent
+            items={['Функции лида на проекте порезали', 'Ребятам дали больше ответственности', 'Ресурс лида распределили на другие проекты']}
+          />
+        </Step>
+      </Steps>
+    </div>
+    <Steps>
+      <Step>
+        <div
+          style={{
+            marginTop: 40,
+            background: tint,
+            borderLeft: '8px solid var(--osd-accent)',
+            borderRadius: '0 var(--osd-radius) var(--osd-radius) 0',
+            padding: '24px 40px',
+            fontSize: 34,
+            lineHeight: 1.4,
+            fontWeight: 600,
+          }}
+        >
+          Тимлид не инженер в наших реалиях <A>не нужен</A>. Все наши тимлиды — играющие тренеры.
+        </div>
+      </Step>
+    </Steps>
+  </Frame>
+);
+
+const ShiftCol = ({ title, now, items }: { title: string; now?: boolean; items: string[] }) => (
+  <div
+    style={{
+      flex: 1,
+      minWidth: 0,
+      background: now ? tint : 'transparent',
+      border: now ? '3px solid var(--osd-accent)' : `2px dashed ${accentSoft}`,
+      borderRadius: 'var(--osd-radius)',
+      padding: '36px 44px',
+      color: now ? 'var(--osd-text)' : muted,
+    }}
+  >
+    <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 44, fontWeight: 800, letterSpacing: '-0.02em', color: now ? 'var(--osd-accent)' : muted }}>{title}</div>
+    <ul style={{ margin: '24px 0 0', paddingLeft: 32, fontSize: 32, lineHeight: 1.4, display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {items.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  </div>
+);
+const TeamleadShift: Page = () => (
+  <Frame title="Тимлид: от людей в ролях к системе" lead="Как мы видим роль в обозримом будущем." gap={48}>
+    <div className="rs-steps-row" style={{ display: 'flex', alignItems: 'stretch' }}>
+      <div style={{ flex: 1, minWidth: 0, display: 'flex' }}>
+        <ShiftCol
+          title="Было"
+          items={['Раздаёт задачи между ролями', 'Синхронизирует передачи', 'Ревьюит код руками', 'Растит людей внутри одной роли']}
+        />
+      </div>
+      <Steps>
+        <Step>
+          <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
+            <ArrowRight width={96} />
+            <ShiftCol
+              title="Становится"
+              now
+              items={['Владеет harness команды', 'Проектирует поток: intent → validation', 'Отвечает за quality gates', 'Растит сквозных инженеров']}
+            />
+          </div>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+const TeamleadFocus: Page = () => (
+  <Frame title="Новые зоны ответственности тимлида" gap={56}>
+    <div className="rs-steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 32 }}>
+      <Steps>
+        <Step>
+          <Card label="руки" title="Играющий тренер" text="Тимлид не инженер у нас не нужен: все тимлиды сами ведут задачи" accent />
+        </Step>
+        <Step>
+          <Card label="поток" title="Где нужен человек" text="Решает, где агент идёт сам, а где обязательны человек и gate: заказчик, приёмка, прод" />
+        </Step>
+        <Step>
+          <Card label="люди" title="Рост и бас-фактор" text="Переобучение, перекрытие компетенций, ротации: в маленькой команде каждый на счету" />
+        </Step>
+        <Step>
+          <Card label="harness" title="Качество работы агентов" text="Контекст, правила и скилы проекта: если агент ошибается, это вопрос к системе, а не к человеку" />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+const TeamleadThesis: Page = () => (
+  <Shout eyebrow={<span style={{ fontSize: 30 }}>Как мы видим роль</span>} size={76}>
+    Тимлид отвечает не за людей в ролях, а за <A>систему</A>, в которой работают люди и агенты
+  </Shout>
+);
+
+// Модель компетенций
+const CompetencyTitle: Page = () => <Shout size={112}>Кого мы растим: модель компетенций</Shout>;
+
+const CompetencyAreas: Page = () => (
+  <Frame title="Шесть компетенций" lead="Не про языки и фреймворки, а про то, что человек доводит до результата." gap={56}>
+    <div className="rs-steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+      <Steps>
+        <Step>
+          <Card label="зачем" title="Продукт и домен" text="Понимает бизнес-задачу и задаёт критические вопросы до кода" />
+        </Step>
+        <Step>
+          <Card label="что" title="Спецификация" text="Пишет и читает спеки, ведёт change в сквозном SDD" />
+        </Step>
+        <Step>
+          <Card label="как" title="Работа с агентами" text="Ставит задачу, управляет контекстом, режет работу на шаги" accent />
+        </Step>
+        <Step>
+          <Card label="проверка" title="Валидация" text="Пирамида тестов, ревью AI-кода, quality gates" />
+        </Step>
+        <Step>
+          <Card label="ширина" title="Весь стек" text="Фронт, бэк и инфраструктура на уровне «довести фичу»" />
+        </Step>
+        <Step>
+          <Card label="люди" title="Коммуникация" text="С ПМ, аналитиком и заказчиком: статус и риски прозрачны" />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+const CompetencyLevels: Page = () => (
+  <Frame title="Три грейда продукт-инженера" lead="Грейд определяется бизнес-целью: за какой объём работы инженер отвечает сам." gap={56}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 32, alignItems: 'stretch' }}>
+      <Steps>
+        <Step>
+          <Track n="E1" title="Сопровождение проекта" text="Небольшие задачи" />
+        </Step>
+        <Step>
+          <Track n="E2" title="Самостоятельный полный цикл" text="Крупные задачи" />
+        </Step>
+        <Step>
+          <Track n="E3" title="Ответственность за систему" text="Проект целиком" />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Продукт-инженеры и разные стеки
+const StackReq = ({ n, title, text }: { n: string; title: string; text: string }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 32, padding: '24px 0', borderBottom: `1px solid ${line}` }}>
+    <span style={{ fontFamily: 'var(--osd-font-display)', fontSize: 96, fontWeight: 800, lineHeight: 1, color: 'var(--osd-accent)', width: 80, flex: 'none' }}>{n}</span>
+    <div>
+      <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 40, fontWeight: 700, letterSpacing: '-0.02em' }}>{title}</div>
+      <div style={{ fontSize: 28, color: muted, marginTop: 6 }}>{text}</div>
+    </div>
+  </div>
+);
+const StacksAndSpecializations: Page = () => (
+  <Frame title="Продукт-инженеры и разные стеки" gap={56}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 64, alignItems: 'stretch' }}>
+      <div className="rs-in rs-d1" style={{ flex: 1.1, minWidth: 0 }}>
+        <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--osd-accent)' }}>Общее требование</div>
+        <div style={{ marginTop: 12 }}>
+          <StackReq n="1" title="Фреймворк фронтенда" text="Один из фреймворков, с которыми мы работаем" />
+          <StackReq n="1" title="Язык и фреймворк бэкенда" text="Один ЯП и фреймворк к нему" />
+        </div>
+      </div>
+      <Steps>
+        <Step>
+          <div style={{ flex: 1, minWidth: 0, boxSizing: 'border-box', background: tint, border: '3px solid var(--osd-accent)', borderRadius: 'var(--osd-radius)', padding: '36px 44px' }}>
+            <img src={skillsteamLogo} alt="skillsteam" style={{ height: 44, width: 'auto', display: 'block' }} />
+            <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 44, fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em', margin: '12px 0 24px' }}>Факультативные специализации</div>
+            <div style={{ fontSize: 30, lineHeight: 1.45 }}>
+              Наш движок матриц компетенций <b>skillsteam</b> позволяет добавлять специализации поверх общего ядра продукт-инженера.
+            </div>
+          </div>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Мысль: единый язык на фронте и бэке
+const OneLanguage: Page = () => (
+  <Live style={{ padding: `0 ${PAD}px`, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <div className="rs-in" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Eyebrow style={{ fontSize: 30 }}>Мысль вслух</Eyebrow>
+      <img src={nodejsLogo} alt="Node.js" style={{ height: 96, width: 'auto' }} />
+    </div>
+    <div className="rs-in rs-d1" style={{ marginTop: 36, borderLeft: '10px solid var(--osd-accent)', paddingLeft: 56 }}>
+      <Heading size={72}>
+        Похоже, пора вернуться к идее <A>единого языка</A> на фронтенде и бэкенде — там, где можно себе это позволить
+      </Heading>
+    </div>
+    <Steps>
+      <Step>
+        <div style={{ marginTop: 48, paddingLeft: 66, fontSize: 38, lineHeight: 1.4 }}>
+          Последние годы мы осознанно делаем все новые продукты на одном языке — <b>и кайфуем от этого</b>.
+        </div>
+      </Step>
+      <Step>
+        <div style={{ position: 'absolute', left: PAD + 66, right: PAD, bottom: 120, fontSize: 26, lineHeight: 1.45, color: muted, borderTop: `1px solid ${line}`, paddingTop: 20 }}>
+          А может, стек и ЯП уже не так важны и в код можно не смотреть? Я считаю, пока нет: периодически лазить в код ещё нужно.
+        </div>
+      </Step>
+    </Steps>
+    <Footer />
+  </Live>
+);
+
+// Отдельный трек: FDE
+const FdeTrack: Page = () => (
+  <Frame title={<>Отдельный трек: <A>FDE</A></>} lead="Forward Deployed Engineer: соло у клиента — от бизнес-проблемы до решения под ключ." gap={48}>
+    <div className="rs-steps-row" style={{ display: 'flex', gap: 40, alignItems: 'stretch' }}>
+      <CompareCol
+        label="продукт-инженер"
+        title="ИПР: весь стек"
+        items={['Общее ядро: фронтенд + бэкенд', 'Факультативные специализации в skillsteam', 'Грейды E1 · E2 · E3']}
+      />
+      <Steps>
+        <Step>
+          <CompareCol
+            label="FDE · растим из некоторых ребят"
+            title="ИПР: больше AI-базы"
+            accent
+            items={[
+              'Сам выходит к клиенту и погружается в его бизнес',
+              'Доводит задачу до результата под ключ',
+              'Основной инструмент — AI и агенты',
+              <>
+                В ИПР заметно больше <b>AI-базы</b>
+              </>,
+            ]}
+          />
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
+// Итог для тимлида
+const TeamleadTakeaways: Page = () => (
+  <Frame title="Что делать тимлиду уже сейчас" gap={48}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+      <Steps>
+        <Step>
+          <Takeaway n="1">
+            Считайте <A>срок фичи</A>, а не ускорение отдельных ролей
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="2">
+            Начните с <A>пилотной команды</A> и модели компетенций
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="3">
+            Возьмите <A>harness команды</A> в свою зону ответственности
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="4">
+            Переобучение длиннее внедрения инструментов: <A>начинайте заранее</A>
+          </Takeaway>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
 export const meta: SlideMeta = {
-  title: '3 вектора развития AI SDLC',
+  title: 'Когда AI пишет весь код: что происходит с ролями в команде',
   createdAt: '2026-09-25T17:30:00.000Z',
 };
 
@@ -3370,36 +4417,26 @@ export default [
   Cover,
   About,
   Clients,
-  PollChange,
-  NoSilverBullet,
-  ThreeVectors,
-  // Наша история
+  Agenda,
+  PollRoles,
+  PollSmallTeam,
+  // 01 — Наш путь в AI: AI внутри старых ролей
+  Div01,
   Adoption100,
   PathTo100,
   Start2026,
-  // 01 — Harness
-  Div01,
-  HarnessDirections,
-  ContextVsImpl,
-  Candidates,
-  OpenSpecBase,
-  HarnessStack,
-  MetaRepo,
-  Skills,
-  GatewayOwn,
-  BottleneckFlow,
-  // 02 — Трансформация ролей
-  Div02,
   RolesH1,
+  HarnessDirections,
   Bridge,
   ManagementMistake,
-  LessonsOverview,
   Lesson1,
   FlowAnti,
   FlowE2E,
   FlowV1,
   FlowV2,
   Takeaway1,
+  // 02 — Почему упёрлись в модель: хендофы
+  Div02,
   Lesson2,
   HandoffsExpensive,
   HandoffsContext,
@@ -3411,28 +4448,51 @@ export default [
   Lesson4,
   WeeklySync,
   Takeaway4,
+  BottleneckFlow,
   LessonsConclusion,
-  // А что на рынке
-  MarketTitle,
+  RoleSpeedupDeadEnd,
+  // 03 — Что на рынке
+  Div03,
   MarketNow,
   SdlcShift,
   ProductEngineer,
+  ProductVsOutsource,
   OurModel,
+  OurModelProduct,
+  // 04 — Трансформация ролей
+  Div04,
+  PilotsVeterans,
+  TransformPath,
+  OverlapFrontToBack,
+  OverlapBackToFront,
+  // 05 — Кого мы растим
+  Div05,
+  CompetencyAreas,
+  StacksAndSpecializations,
+  OneLanguage,
+  CompetencyLevels,
+  GradesShift,
+  FdeTrack,
+  // 06 — Как переводим людей
+  Div06,
+  BigtechRecert,
+  Screening,
+  QaHardest,
   Damki2,
   NeedToChange,
-  // 03 — Автономность
-  Div03,
-  Autonomy,
-  Fabrica,
-  BusFactor,
-  AutonomyPlatform,
-  NoTurnkey,
-  PracticesMatrix,
-  CentralLoop,
+  // 07 — Роль тимлида
+  Div07,
+  TeamleadToday,
+  TeamleadCase,
+  TeamleadSlider,
+  TeamleadThesis,
   // Финал
   ConclusionsTitle,
   LookBack,
-  VectorTakeaways,
-  PersonalStrategy,
   Questions,
+  // Не в показе, вернуть при необходимости:
+  // PollChange, NoSilverBullet, MarketTitle, TransformTitle, CompetencyTitle, TeamleadTitle,
+  // TeamleadTakeaways, PersonalStrategy, ThreeVectors, LessonsOverview, ContextVsImpl,
+  // Candidates, OpenSpecBase, HarnessStack, MetaRepo, Skills, GatewayOwn, Autonomy, Fabrica,
+  // BusFactor, AutonomyPlatform, NoTurnkey, PracticesMatrix, CentralLoop, VectorTakeaways
 ] satisfies Page[];
