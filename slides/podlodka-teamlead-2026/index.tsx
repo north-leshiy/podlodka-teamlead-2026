@@ -4237,6 +4237,40 @@ const TeamleadThesis: Page = () => (
   </Shout>
 );
 
+const TeamleadActions: Page = () => (
+  <Frame title="Что может тимлид, а не CTO" lead="Всё в пределах своей команды, без перестройки компании." gap={44}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+      <Steps>
+        <Step>
+          <Takeaway n="1">
+            Поговорить с командой: широкий инженер <A>ценнее на рынке</A>, чем узкий специалист
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="2">
+            Построить <A>матрицу перекрытия</A>: что каждый уже может делать за соседа
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="3">
+            Раздавать задачи <A>через границу ролей</A>: фронт берёт простой бэк и наоборот
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="4">
+            Дать одному инженеру провести фичу <A>от спеки до прода</A>
+          </Takeaway>
+        </Step>
+        <Step>
+          <Takeaway n="5">
+            Записать расширение зоны ответственности <A>в ИПР</A> и обсуждать на 1:1
+          </Takeaway>
+        </Step>
+      </Steps>
+    </div>
+  </Frame>
+);
+
 // Модель компетенций
 const CompetencyTitle: Page = () => <Shout size={112}>Кого мы растим: модель компетенций</Shout>;
 
@@ -4486,6 +4520,7 @@ export default [
   TeamleadCase,
   TeamleadSlider,
   TeamleadThesis,
+  TeamleadActions,
   // Финал
   ConclusionsTitle,
   LookBack,
