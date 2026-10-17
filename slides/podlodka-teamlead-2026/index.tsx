@@ -1764,12 +1764,12 @@ const Autonomy: Page = () => (
   </Live>
 );
 
-// Хендофы дороги: работа стала короче хендофа
+// Хендофы стоят дорого: работа стала короче хендофа
 const HandoffsExpensive: Page = () => (
   <Live style={{ padding: `100px ${PAD}px 0` }}>
     <Steps>
       <div className="rs-in">
-        <Eyebrow>Хендофы дороги</Eyebrow>
+        <Eyebrow>Хендофы стоят дорого</Eyebrow>
         <div style={{ marginTop: 20 }}>
           <Heading size={72}>Работа стала короче хендофа</Heading>
         </div>
@@ -1796,12 +1796,12 @@ const HandoffsExpensive: Page = () => (
   </Live>
 );
 
-// Хендофы дороги: погружение в задачу
+// Хендофы стоят дорого: погружение в задачу
 const HandoffsContext: Page = () => (
   <Live style={{ padding: `100px ${PAD}px 0` }}>
     <Steps>
       <div className="rs-in">
-        <Eyebrow>Хендофы дороги</Eyebrow>
+        <Eyebrow>Хендофы стоят дорого</Eyebrow>
         <div style={{ marginTop: 20 }}>
           <Heading size={72}>Погружение в задачу плохо сжимается</Heading>
         </div>
@@ -1833,12 +1833,12 @@ const HandoffsContext: Page = () => (
   </Live>
 );
 
-// Хендофы дороги: шесть против одного
+// Хендофы стоят дорого: шесть против одного
 const HandoffsSdlc: Page = () => (
   <Live style={{ padding: `100px ${PAD}px 0` }}>
     <Steps>
       <div className="rs-in">
-        <Eyebrow>Хендофы дороги</Eyebrow>
+        <Eyebrow>Хендофы стоят дорого</Eyebrow>
         <div style={{ marginTop: 20 }}>
           <Heading size={72}>Шесть хендофов против одного</Heading>
         </div>
@@ -2986,7 +2986,7 @@ const Takeaway1: Page = () => (
 );
 const Takeaway2: Page = () => (
   <LessonTakeaway n="2">
-    <A>Хендофы дороги</A>: работа с агентом короче передачи между людьми
+    <A>Хендофы стоят дорого</A>: работа с агентом короче передачи между людьми
   </LessonTakeaway>
 );
 const Takeaway3: Page = () => (
@@ -3084,7 +3084,7 @@ const LessonsConclusion: Page = () => (
       <Steps>
         <Step>
           <Takeaway n="1">
-            <A>Хендофы дороги</A>: работа с агентом короче передачи между людьми
+            <A>Хендофы стоят дорого</A>: работа с агентом короче передачи между людьми
           </Takeaway>
         </Step>
         <Step>
@@ -3490,7 +3490,7 @@ const PollRoles: Page = () => (
   </Frame>
 );
 const PollSmallTeam: Page = () => (
-  <Frame title="🙋 Кто слышал про small team?" lead="Напишите в чат:" gap={44}>
+  <Frame title="🙋 Кто слышал про tiny team?" lead="Напишите в чат:" gap={44}>
     <div className="rs-steps-col" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <Steps>
         <Step>
@@ -3500,7 +3500,7 @@ const PollSmallTeam: Page = () => (
           <PollOption n="−">Не слышал про такой термин</PollOption>
         </Step>
         <Step>
-          <PollOption n="!!">У нас уже small team =)</PollOption>
+          <PollOption n="!!">У нас уже tiny team =)</PollOption>
         </Step>
       </Steps>
     </div>
@@ -3980,7 +3980,7 @@ const TeamleadToday: Page = () => (
           <Card label="чистые продукт-инженеры" title="1 лид + 3 инженера" text="Команда из зубров с 10–15 годами опыта" />
         </Step>
         <Step>
-          <Card label="small team · 1–2 инженера" title="Тимлид уже не нужен" text="Инженеры сами ведут проект" />
+          <Card label="tiny team · 1–2 инженера" title="Тимлид уже не нужен" text="Инженеры сами ведут проект" />
         </Step>
       </Steps>
     </div>
@@ -4124,7 +4124,7 @@ const TeamleadSlider: Page = () => (
 
 // Кейс: команда отказалась от тимлида
 const TeamleadCase: Page = () => (
-  <Frame title={<>Кейс: <A>«нам тимлид не нужен»</A></>} lead="Small team пришла с конфликтом: лид ничего не делает, зачем он нам." gap={48}>
+  <Frame title={<>Кейс: <A>«нам тимлид не нужен»</A></>} lead="Tiny team пришла с конфликтом: лид ничего не делает, зачем он нам." gap={48}>
     <div className="rs-steps-row" style={{ display: 'flex', gap: 40, alignItems: 'stretch' }}>
       <Steps>
         <Step>
