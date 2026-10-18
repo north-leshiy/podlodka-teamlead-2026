@@ -3,6 +3,7 @@ import type { DesignSystem, Page, SlideMeta, SlideTransition } from '@open-slide
 import { MorphElement, Step, Steps, useIsActivePage, useSlidePageNumber } from '@open-slide/core';
 
 import speakerImg from './assets/speaker.png';
+import coverImg from './assets/cover.jpg';
 import logoAgenticdevconf from './assets/conf-logos/agenticdevconf.png';
 import logoAinativeconf from './assets/conf-logos/ainativeconf.svg';
 import logoTechleadconf from './assets/conf-logos/techleadconf.svg';
@@ -432,28 +433,6 @@ const Caption = ({ children, top = 40 }: { children: ReactNode; top?: number }) 
   <div style={{ fontSize: 30, lineHeight: 1.4, color: muted, marginTop: top }}>{children}</div>
 );
 
-
-const Speaker = ({ size = 120, light }: { size?: number; light?: boolean }) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-    <img
-      src={speakerImg}
-      alt="Иван Поддубный"
-      style={{
-        width: size,
-        height: size,
-        borderRadius: '50%',
-        objectFit: 'cover',
-        objectPosition: '50% 18%',
-        border: `4px solid ${accentSoft}`,
-        flex: 'none',
-      }}
-    />
-    <div>
-      <div style={{ fontFamily: 'var(--osd-font-display)', fontSize: 36, fontWeight: 700, lineHeight: 1.2 }}>Иван Поддубный</div>
-      <div style={{ fontSize: 26, color: light ? 'rgba(255,255,255,0.8)' : muted, marginTop: 6 }}>CTO Вебпрактик</div>
-    </div>
-  </div>
-);
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -1041,30 +1020,8 @@ const TrendCol = ({ title, dir, items }: { title: string; dir: 'down' | 'up'; it
 
 // 01 — Обложка
 const Cover: Page = () => (
-  <Live
-    style={{
-      padding: `0 ${PAD}px`,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      backgroundImage: 'radial-gradient(1100px 800px at 92% 10%, #e6d9ff 0%, rgba(230,217,255,0) 60%)',
-    }}
-  >
-    <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 14, background: 'var(--osd-accent)' }} />
-    <div className="rs-in">
-      <Eyebrow style={{ fontSize: 34 }}>Podlodka TeamLead Crew · 2026</Eyebrow>
-    </div>
-    <div className="rs-in rs-d1" style={{ marginTop: 40, maxWidth: 1560 }}>
-      <Heading size={100}>
-        Когда AI пишет весь код: что происходит с <A>ролями в&nbsp;команде</A>
-      </Heading>
-    </div>
-    <div className="rs-in rs-d2" style={{ fontSize: 38, lineHeight: 1.4, color: muted, marginTop: 40, maxWidth: 1600 }}>
-      Опыт перестройки ролевой модели: от ускорения ролей к сквозным инженерам
-    </div>
-    <div className="rs-in rs-d3" style={{ marginTop: 80 }}>
-      <Speaker />
-    </div>
+  <Live>
+    <img src={coverImg} alt="Когда AI пишет весь код: что происходит с ролями в команде — Иван Поддубный" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
   </Live>
 );
 Cover.transition = {
